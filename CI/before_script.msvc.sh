@@ -917,17 +917,19 @@ printf "Qt ${QT_VER}... "
 		aqt-venv/${VENV_BIN_DIR}/pip list | grep 'aqtinstall\s*1.1.3' || [ $? -ne 0 ]
 		if [ $? -eq 0 ]; then
 			echo "  Installing aqt wheel into virtualenv..."
-			run_cmd "aqt-venv/${VENV_BIN_DIR}/pip" install aqtinstall==1.1.3
+			run_cmd pip install aqtinstall==1.1.3
+			echo "HERE!"
 		fi
+		echo "HERE!2"
 		popd > /dev/null
 
 		rm -rf Qt
-
+		echo "HERE!3" 
 		mkdir Qt
 		cd Qt
-
+		echo "HERE!4"
 		run_cmd "${DEPS}/aqt-venv/${VENV_BIN_DIR}/aqt" install 5.15.2 windows desktop "win64_msvc2019${SUFFIX}"
-
+		echo "HERE!5"
 		printf "  Cleaning up extraneous data... "
 		rm -rf Qt/{aqtinstall.log,Tools}
 
