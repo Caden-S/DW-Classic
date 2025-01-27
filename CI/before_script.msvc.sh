@@ -926,7 +926,7 @@ printf "Qt ${QT_VER}... "
 		mkdir Qt
 		cd Qt
 
-		run_cmd "${DEPS}/aqt-venv/${VENV_BIN_DIR}/aqt" install ${QT_VER} windows desktop "win${BITS}_msvc${QT_MSVC_YEAR}${SUFFIX}"
+		run_cmd "${DEPS}/aqt-venv/${VENV_BIN_DIR}/aqt" install 5.15.2 windows desktop "win64_msvc2019${SUFFIX}"
 
 		printf "  Cleaning up extraneous data... "
 		rm -rf Qt/{aqtinstall.log,Tools}
