@@ -904,6 +904,14 @@ printf "Qt ${QT_VER}... "
 			echo "  Creating Virtualenv for aqt..."
 			run_cmd python -m venv aqt-venv
 		fi
+				if [ -d 'aqt-venv/bin' ]; then
+			VENV_BIN_DIR='bin'
+		elif [ -d 'aqt-venv/Scripts' ]; then
+			VENV_BIN_DIR='Scripts'
+		else
+			echo "Error: Failed to create virtualenv in expected location."
+			wrappedExit 1
+		fi
 		python -m venv aqt-venv
 
 		# check version
