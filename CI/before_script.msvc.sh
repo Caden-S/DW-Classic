@@ -904,20 +904,13 @@ printf "Qt ${QT_VER}... "
 			echo "  Creating Virtualenv for aqt..."
 			run_cmd python -m venv aqt-venv
 		fi
-		if [ -d 'aqt-venv/bin' ]; then
-			VENV_BIN_DIR='bin'
-		elif [ -d 'aqt-venv/Scripts' ]; then
-			VENV_BIN_DIR='Scripts'
-		else
-			echo "Error: Failed to create virtualenv in expected location."
-			wrappedExit 1
-		fi
+		python -m venv aqt-venv
 
 		# check version
 		aqt-venv/${VENV_BIN_DIR}/pip list | grep 'aqtinstall\s*1.1.3' || [ $? -ne 0 ]
 		if [ $? -eq 0 ]; then
 			echo "  Installing aqt wheel into virtualenv..."
-			run_cmd "aqt-venv/${VENV_BIN_DIR}/pip" install aqtinstall==1.1.3
+			run_cmd "aqt-venv/${VENV_BIN_DIR}/pip" install aqtinstall==1.1.1
 		fi
 		popd > /dev/null
 
